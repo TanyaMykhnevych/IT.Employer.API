@@ -1,4 +1,5 @@
-﻿using IT.Employer.Services.Constants;
+﻿using IT.Employer.Domain.Models.User;
+using IT.Employer.Services.Constants;
 using IT.Employer.Services.Exceptions.User;
 using IT.Employer.Services.Models.User;
 using IT.Employer.Services.Services;
@@ -65,6 +66,7 @@ namespace IT.Employer.WebAPI.Controllers.User
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize(Roles = Role.Admin)]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _service.DeleteUser(id);
