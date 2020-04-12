@@ -78,6 +78,12 @@ namespace IT.Employer.API
 
             app.UseHttpsRedirection();
 
+            app.UseCors(builder => builder
+               .WithOrigins("http://localhost:4200")
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials());
+
             app.UseStaticFiles();
 
             app.UseRouting();
