@@ -1,4 +1,4 @@
-﻿namespace IT.Employer.Shared.Enums
+﻿namespace IT.Employer.Domain.Enums
 {
     public enum Profession
     {

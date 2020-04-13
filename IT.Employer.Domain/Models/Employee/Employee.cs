@@ -1,7 +1,7 @@
-﻿using IT.Employer.Domain.Models.Base;
+﻿using IT.Employer.Domain.Enums;
+using IT.Employer.Domain.Models.Base;
 using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Domain.Models.TeamN;
-using IT.Employer.Shared.Enums;
 using System;
 using System.Collections.Generic;
 

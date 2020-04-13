@@ -1,6 +1,6 @@
-﻿namespace IT.Employer.Shared.Enums
+﻿namespace IT.Employer.Entities.Enums
 {
-    public enum Technology
+    public enum TechnologyDTO
     {
         None,
 

@@ -11,16 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Employer.Entities", "IT.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IT.Employer.Services", "IT.Employer.Services\IT.Employer.Services.csproj", "{A3C9BFE1-D011-4BF2-8ABB-57A7E1AF4D37}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{7F0BAACA-CBF2-42BC-8FC8-C61434F6EB84}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{DE923A29-BE03-4F9C-BC6E-5F4D2102CD4E}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared\Shared.projitems*{073ef8c1-21ef-496d-8420-154579aa8c83}*SharedItemsImports = 5
-		Shared\Shared.projitems*{ccac79c0-dbf1-4235-9e03-81a820d1a9af}*SharedItemsImports = 5
-		Shared\Shared.projitems*{de923a29-be03-4f9c-bc6e-5f4d2102cd4e}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -45,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DE923A29-BE03-4F9C-BC6E-5F4D2102CD4E} = {7F0BAACA-CBF2-42BC-8FC8-C61434F6EB84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1820E7A-1E09-4CD3-B8D5-7654776E4A3F}

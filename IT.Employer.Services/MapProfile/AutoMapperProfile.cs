@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.Base;
 using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Domain.Models.EmployeeN;
 using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Domain.Models.User;
 using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.Company;
 using IT.Employer.Entities.Models.EmployeeN;
@@ -39,6 +41,13 @@ namespace IT.Employer.Services.MapProfile
 
 
             CreateMap<BaseEntity, BaseEntityDTO>().ReverseMap();
+
+            CreateMap<Profession, ProfessionDTO>().ReverseMap();
+            CreateMap<Position, PositionDTO>().ReverseMap();
+            CreateMap<Technology, TechnologyDTO>().ReverseMap();
+            CreateMap<CompanySize, CompanySizeDTO>().ReverseMap();
+            CreateMap<CompanyType, CompanyTypeDTO>().ReverseMap();
+
             CreateMap<Company, CompanyDTO>().ReverseMap();
             CreateMap<Employee, EmployeeDTO>().ReverseMap();
             CreateMap<Characteristic, CharacteristicDTO>().ReverseMap();

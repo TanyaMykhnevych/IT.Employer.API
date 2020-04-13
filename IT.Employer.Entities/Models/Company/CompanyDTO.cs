@@ -1,4 +1,5 @@
-﻿using IT.Employer.Entities.Models.Base;
+﻿using IT.Employer.Entities.Enums;
+using IT.Employer.Entities.Models.Base;
 
 namespace IT.Employer.Entities.Models.Company
 {
@@ -9,5 +10,7 @@ namespace IT.Employer.Entities.Models.Company
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public CompanyTypeDTO? Type { get; set; }
+        public CompanySizeDTO? Size { get; set; }
     }
 }
