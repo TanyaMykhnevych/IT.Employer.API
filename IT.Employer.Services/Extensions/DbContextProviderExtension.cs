@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using IT.Employer.Domain;
 using Microsoft.EntityFrameworkCore;
-using IT.Employer.Domain;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IT.Employer.Services.Extensions
 {

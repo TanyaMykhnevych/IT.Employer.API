@@ -1,10 +1,10 @@
-using System;
-using System.Threading.Tasks;
 using IT.Employer.Domain;
 using IT.Employer.Services.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Threading.Tasks;
 
 namespace IT.Employer.API
 {

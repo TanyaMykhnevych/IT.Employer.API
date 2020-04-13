@@ -1,5 +1,4 @@
 using AutoMapper;
-using System;
 using IT.Employer.Services.Extensions;
 using IT.Employer.Services.MapProfile;
 using IT.Employer.WebAPI.Converters;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace IT.Employer.API
 {

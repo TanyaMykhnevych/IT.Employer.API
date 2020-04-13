@@ -1,6 +1,16 @@
 ﻿using AutoMapper;
+using IT.Employer.Domain.Models.Base;
+using IT.Employer.Domain.Models.CompanyN;
+using IT.Employer.Domain.Models.EmployeeN;
+using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Domain.Models.User;
+using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Entities.Models.Base;
+using IT.Employer.Entities.Models.Company;
+using IT.Employer.Entities.Models.EmployeeN;
+using IT.Employer.Entities.Models.Team;
 using IT.Employer.Entities.Models.User;
+using IT.Employer.Entities.Models.Vacancy;
 using IT.Employer.Services.Extensions;
 using IT.Employer.Services.Models.User;
 
@@ -26,6 +36,14 @@ namespace IT.Employer.Services.MapProfile
                 .ForMember(u => u.LastName, m => m.MapFrom(u => u.LastName))
                 .ForMember(u => u.UserName, m => m.MapFrom(u => u.Username))
                 .ForMember(u => u.IsActive, m => m.MapFrom(u => u.IsActive));
+
+
+            CreateMap<BaseEntity, BaseEntityDTO>().ReverseMap();
+            CreateMap<Company, CompanyDTO>().ReverseMap();
+            CreateMap<Employee, EmployeeDTO>().ReverseMap();
+            CreateMap<Characteristic, CharacteristicDTO>().ReverseMap();
+            CreateMap<Team, TeamDTO>().ReverseMap();
+            CreateMap<Vacancy, VacancyDTO>().ReverseMap();
         }
     }
 }
