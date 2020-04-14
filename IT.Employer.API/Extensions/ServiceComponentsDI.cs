@@ -3,7 +3,11 @@ using IT.Employer.Services.QueryBuilders.CompanyN;
 using IT.Employer.Services.QueryBuilders.EmployeeN;
 using IT.Employer.Services.QueryBuilders.VacancyN;
 using IT.Employer.Services.Services;
+using IT.Employer.Services.Services.CompanyN;
+using IT.Employer.Services.Services.EmployeeN;
+using IT.Employer.Services.Services.TeamN;
 using IT.Employer.Services.Services.UserAuthorizationService;
+using IT.Employer.Services.Services.VacancyN;
 using IT.Employer.Services.Stores;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +31,10 @@ namespace IT.Employer.WebAPI.Extensions
             // serivces
             services.AddTransient<BaseAuthorizationService, AppUserAuthorizationService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IVacancyService, VacancyService>();
+            services.AddTransient<ITeamService, TeamService>();
 
             // query builders
             services.AddTransient<IEmployeeSearchQueryBuilder, EmployeeSearchQueryBuilder>();

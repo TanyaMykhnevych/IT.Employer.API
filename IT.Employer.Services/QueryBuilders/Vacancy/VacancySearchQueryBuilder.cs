@@ -1,11 +1,9 @@
 ﻿using IT.Employer.Domain;
 using IT.Employer.Domain.Enums;
-using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Domain.Models.VacancyN;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace IT.Employer.Services.QueryBuilders.VacancyN
 {

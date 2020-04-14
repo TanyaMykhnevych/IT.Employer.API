@@ -1,5 +1,5 @@
 ﻿using IT.Employer.Domain.Enums;
-using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Domain.Models.VacancyN;
 using IT.Employer.Services.QueryBuilders.Base;
 
 namespace IT.Employer.Services.QueryBuilders.VacancyN

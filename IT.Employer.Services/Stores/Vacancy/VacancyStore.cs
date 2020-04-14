@@ -1,5 +1,5 @@
 ﻿using IT.Employer.Domain;
-using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Domain.Models.VacancyN;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

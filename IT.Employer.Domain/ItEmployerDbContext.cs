@@ -3,7 +3,7 @@ using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Domain.Models.EmployeeN;
 using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Domain.Models.User;
-using IT.Employer.Domain.Models.Vacancy;
+using IT.Employer.Domain.Models.VacancyN;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

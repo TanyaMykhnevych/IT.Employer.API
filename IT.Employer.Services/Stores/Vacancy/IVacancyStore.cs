@@ -1,4 +1,4 @@
-﻿using IT.Employer.Domain.Models.Vacancy;
+﻿using IT.Employer.Domain.Models.VacancyN;
 using System;
 using System.Threading.Tasks;
 

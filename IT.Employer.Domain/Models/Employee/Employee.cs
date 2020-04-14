@@ -18,7 +18,6 @@ namespace IT.Employer.Domain.Models.EmployeeN
         public Position Position { get; set; }
         public Technology PrimaryTechnology { get; set; }
 
-        public string Сharacteristic { get; set; }
         public float ExperienceYears { get; set; }
 
         public string Email { get; set; }

@@ -1,6 +1,6 @@
 ﻿using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
-using IT.Employer.Entities.Models.Company;
+using IT.Employer.Entities.Models.CompanyN;
 using System;
 
 namespace IT.Employer.Entities.Models.Vacancy

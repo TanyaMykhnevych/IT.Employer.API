@@ -1,7 +1,7 @@
 ﻿using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
 
-namespace IT.Employer.Entities.Models.Company
+namespace IT.Employer.Entities.Models.CompanyN
 {
     public class CompanyDTO : BaseEntityDTO
     {

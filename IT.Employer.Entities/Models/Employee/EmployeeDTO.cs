@@ -1,6 +1,6 @@
 ﻿using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
-using IT.Employer.Entities.Models.Company;
+using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Entities.Models.Team;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,6 @@ namespace IT.Employer.Entities.Models.EmployeeN
         public PositionDTO Position { get; set; }
         public TechnologyDTO PrimaryTechnology { get; set; }
 
-        public string Сharacteristic { get; set; }
         public float ExperienceYears { get; set; }
 
         public string Email { get; set; }

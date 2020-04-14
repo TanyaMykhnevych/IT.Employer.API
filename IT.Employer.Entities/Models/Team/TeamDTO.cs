@@ -1,5 +1,5 @@
 ﻿using IT.Employer.Entities.Models.Base;
-using IT.Employer.Entities.Models.Company;
+using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Entities.Models.EmployeeN;
 using System;
 using System.Collections.Generic;

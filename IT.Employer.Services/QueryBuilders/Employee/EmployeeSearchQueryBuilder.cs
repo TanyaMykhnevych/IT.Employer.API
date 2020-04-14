@@ -69,7 +69,7 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
         {
             if (firstName != null)
             {
-                _query = _query.Where(e => String.Equals(e.FirstName, firstName, StringComparison.CurrentCulture));
+                _query = _query.Where(e => String.Equals(e.FirstName, firstName, StringComparison.CurrentCultureIgnoreCase));
             }
 
             return this;
@@ -79,7 +79,7 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
         {
             if (lastName != null)
             {
-                _query = _query.Where(e => String.Equals(e.LastName, lastName, StringComparison.CurrentCulture));
+                _query = _query.Where(e => String.Equals(e.LastName, lastName, StringComparison.CurrentCultureIgnoreCase));
             }
 
             return this;

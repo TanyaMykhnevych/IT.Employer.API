@@ -1,9 +1,6 @@
 ﻿using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Services.QueryBuilders.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IT.Employer.Services.QueryBuilders.CompanyN
 {

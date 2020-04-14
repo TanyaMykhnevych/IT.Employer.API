@@ -3,7 +3,7 @@ using IT.Employer.Domain.Models.Base;
 using IT.Employer.Domain.Models.CompanyN;
 using System;
 
-namespace IT.Employer.Domain.Models.Vacancy
+namespace IT.Employer.Domain.Models.VacancyN
 {
     public class Vacancy : BaseEntity
     {
