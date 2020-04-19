@@ -9,5 +9,6 @@ namespace IT.Employer.Services.QueryBuilders.CompanyN
         ICompanySearchQueryBuilder SetBaseCompaniesInfo(bool asNoTracking = true);
         ICompanySearchQueryBuilder SetType(CompanyType? type);
         ICompanySearchQueryBuilder SetSize(CompanySize? size);
+        ICompanySearchQueryBuilder SetSearchTerm(string searchterm);
     }
 }

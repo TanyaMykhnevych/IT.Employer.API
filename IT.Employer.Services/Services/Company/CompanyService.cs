@@ -102,6 +102,7 @@ namespace IT.Employer.Services.Services.CompanyN
             IQueryable<Company> query = _queryBuilder.SetBaseCompaniesInfo()
                                                      .SetType(_mapper.Map<CompanyType?>(parameters.Type))
                                                      .SetSize(_mapper.Map<CompanySize?>(parameters.Size))
+                                                     .SetSearchTerm(parameters.SearchTerm)
                                                      .Build();
             return query;
         }

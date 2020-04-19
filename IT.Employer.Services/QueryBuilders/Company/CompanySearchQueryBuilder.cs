@@ -2,6 +2,7 @@
 using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.CompanyN;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace IT.Employer.Services.QueryBuilders.CompanyN
@@ -47,6 +48,16 @@ namespace IT.Employer.Services.QueryBuilders.CompanyN
             if (type.HasValue)
             {
                 _query = _query.Where(e => e.Type == type.Value);
+            }
+
+            return this;
+        }
+
+        public ICompanySearchQueryBuilder SetSearchTerm(string searchterm)
+        {
+            if (!string.IsNullOrWhiteSpace(searchterm))
+            {
+                _query = _query.Where(e => e.Name.Contains(searchterm));
             }
 
             return this;

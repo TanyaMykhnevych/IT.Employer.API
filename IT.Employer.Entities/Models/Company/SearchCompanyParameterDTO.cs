@@ -7,5 +7,6 @@ namespace IT.Employer.Entities.Models.CompanyN
     {
         public CompanyTypeDTO? Type { get; set; }
         public CompanySizeDTO? Size { get; set; }
+        public string SearchTerm { get; set; }
     }
 }
