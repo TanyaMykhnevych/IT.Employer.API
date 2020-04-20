@@ -14,6 +14,7 @@ namespace IT.Employer.Entities.Models.Vacancy
         public TechnologyDTO PrimaryTechnology { get; set; }
         public float ExperienceYears { get; set; }
         public Guid? CompanyId { get; set; }
+        public string Image { get; set; }
 
         public CompanyDTO Company { get; set; }
     }

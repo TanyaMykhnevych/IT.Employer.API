@@ -14,6 +14,7 @@ namespace IT.Employer.Domain.Models.VacancyN
         public Technology PrimaryTechnology { get; set; }
         public float ExperienceYears { get; set; }
         public Guid? CompanyId { get; set; }
+        public string Image { get; set; }
 
         public Company Company { get; set; }
     }
