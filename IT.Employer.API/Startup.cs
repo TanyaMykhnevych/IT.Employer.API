@@ -1,13 +1,16 @@
 using AutoMapper;
 using IT.Employer.Services.Extensions;
 using IT.Employer.Services.MapProfile;
+using IT.Employer.Services.Models.Auth;
 using IT.Employer.WebAPI.Converters;
 using IT.Employer.WebAPI.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 
@@ -50,6 +53,28 @@ namespace IT.Employer.API
 
             services.SetupIdentity();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.IncludeErrorDetails = true;
+
+                o.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateActor = false,
+                    ValidIssuer = AuthOptions.ISSUER,
+                    ValidAudience = AuthOptions.AUDIENCE,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                    ValidateLifetime = true,
+                };
+            });
+
+
+            services.AddAuthorization();
+
             services.AddITEmployerDbContext(Configuration.GetConnectionString("MsSQLConnection"));
 
             services.AddAutoMapper(typeof(AutoMapperProfile));
@@ -87,6 +112,8 @@ namespace IT.Employer.API
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

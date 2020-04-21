@@ -105,6 +105,7 @@ namespace IT.Employer.Services.Services.VacancyN
                                          .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
                                          .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
                                          .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
+                                         .SetMyVacancies(parameters.MyVacancies, parameters.UserId)
                                          .Build();
             return query;
         }

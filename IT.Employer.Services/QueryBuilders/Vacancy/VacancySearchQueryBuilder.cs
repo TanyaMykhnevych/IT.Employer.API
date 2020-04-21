@@ -92,5 +92,15 @@ namespace IT.Employer.Services.QueryBuilders.VacancyN
 
             return this;
         }
+
+        public IVacancySearchQueryBuilder SetMyVacancies(bool myVacancies, Guid? userId)
+        {
+            if (myVacancies && userId.HasValue)
+            {
+                _query = _query.Where(e => e.UserId == userId);
+            }
+
+            return this;
+        }
     }
 }

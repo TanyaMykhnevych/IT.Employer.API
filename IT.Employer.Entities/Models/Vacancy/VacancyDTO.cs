@@ -15,6 +15,7 @@ namespace IT.Employer.Entities.Models.Vacancy
         public float ExperienceYears { get; set; }
         public Guid? CompanyId { get; set; }
         public string Image { get; set; }
+        public Guid? UserId { get; set; }
 
         public CompanyDTO Company { get; set; }
     }

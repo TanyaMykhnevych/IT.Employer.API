@@ -1,6 +1,7 @@
 ﻿using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.VacancyN;
 using IT.Employer.Services.QueryBuilders.Base;
+using System;
 
 namespace IT.Employer.Services.QueryBuilders.VacancyN
 {
@@ -11,5 +12,6 @@ namespace IT.Employer.Services.QueryBuilders.VacancyN
         IVacancySearchQueryBuilder SetPosition(Position? position);
         IVacancySearchQueryBuilder SetPrimaryTechnology(Technology? technology);
         IVacancySearchQueryBuilder SetExperience(int? from, int? to);
+        IVacancySearchQueryBuilder SetMyVacancies(bool myVacancies, Guid? userId);
     }
 }

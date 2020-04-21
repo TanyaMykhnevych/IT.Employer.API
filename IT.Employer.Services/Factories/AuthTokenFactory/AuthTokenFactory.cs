@@ -19,7 +19,8 @@ namespace IT.Employer.Services.Factories.AuthTokenFactory
             List<Claim> claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub,username),
-                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, username),
             };
 
             claims.AddRange(businessClaims);
