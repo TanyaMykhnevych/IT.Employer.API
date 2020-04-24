@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IT.Employer.Domain.Models.Base.BaseEntity" Collapsed="true">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Base\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.CompanyN.Company">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAggAAAAAAAAAQAAAAAAAACAQAAIAAAAAA=</HashCode>
+      <FileName>Models\Company\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.EmployeeN.Characteristic">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAACAACAAA=</HashCode>
+      <FileName>Models\Employee\Characteristic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.EmployeeN.Employee">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAEAAACIgQAAgCAAAAAwCAAAAAAAAEAAgBAAAAAg=</HashCode>
+      <FileName>Models\Employee\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.TeamN.Team">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAEBAAAAAA=</HashCode>
+      <FileName>Models\Team\Team.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.User.AppUser" Collapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\User\AppUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.User.ITEmployerRole" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\ITEmployerRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.User.Role" Collapsed="true">
+    <Position X="11.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.VacancyN.Vacancy">
+    <Position X="13" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBAAAAAAIgAAAgAAAAAAwAAAAAABAAAAAgBAAAAAg=</HashCode>
+      <FileName>Models\Vacancy\Vacancy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="IT.Employer.Domain.Enums.CompanySize">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAABgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Enums\CompanySize.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT.Employer.Domain.Enums.CompanyType">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAACAAAACAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Enums\CompanyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT.Employer.Domain.Enums.Position">
+    <Position X="7.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAEAAAA=</HashCode>
+      <FileName>Enums\Position.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT.Employer.Domain.Enums.Profession">
+    <Position X="6" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAgwAAAAhIBAAAAAAAAAABAIAAAgBAAAAgCAEAAAA=</HashCode>
+      <FileName>Enums\Profession.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="IT.Employer.Domain.Enums.Technology">
+    <Position X="9.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAEAAEAAQMAQAABEAAAAAAAEQAAAAEQAAAgAEAEIA=</HashCode>
+      <FileName>Enums\Technology.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
