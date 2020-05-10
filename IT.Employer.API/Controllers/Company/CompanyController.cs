@@ -1,7 +1,9 @@
-﻿using IT.Employer.Entities.Models.Base;
+﻿using IT.Employer.Domain.Models.User;
+using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Services.Services.CompanyN;
 using IT.Employer.WebAPI.Filters;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -13,10 +15,13 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
     public class CompanyController : Controller
     {
         private readonly ICompanyService _service;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CompanyController(ICompanyService service)
+        public CompanyController(ICompanyService service, UserManager<AppUser> userManager)
         {
             _service = service;
+            _service = service;
+            _userManager = userManager;
         }
 
         [HttpGet("{id:guid}")]
@@ -39,9 +44,9 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CompanyDTO model)
         {
-            await _service.Create(model);
+            Guid created = await _service.Create(model, await GetCurrentUserId());
 
-            return Ok(_service.GetById(model.Id));
+            return Ok(_service.GetById(created));
         }
 
         [HttpPut("{id}")]
@@ -61,6 +66,13 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
             await _service.Delete(id);
 
             return Ok();
+        }
+
+
+        private async Task<Guid> GetCurrentUserId()
+        {
+            string name = _userManager.GetUserName(User);
+            return (await _userManager.FindByNameAsync(name)).Id;
         }
     }
 }

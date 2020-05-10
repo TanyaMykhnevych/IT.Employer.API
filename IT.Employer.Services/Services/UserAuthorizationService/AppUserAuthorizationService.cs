@@ -47,5 +47,20 @@ namespace IT.Employer.Services.Services.UserAuthorizationService
 
             return result.Succeeded;
         }
+
+        public async override Task<UserAuthInfo> GetUserInfoAsync(AuthSignInModel model)
+        {
+            AppUser user = await _userManager.FindByNameAsync(model.UserName);
+
+            UserAuthInfo info = new UserAuthInfo
+            {
+                Role = user.Role,
+                UserId = user.Id,
+                UserName = user.UserName,
+                CompanyId = user.CompanyId
+            };
+
+            return info;
+        }
     }
 }

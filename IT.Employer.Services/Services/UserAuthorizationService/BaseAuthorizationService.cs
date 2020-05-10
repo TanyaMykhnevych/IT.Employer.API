@@ -24,14 +24,18 @@ namespace IT.Employer.Services.Services.UserAuthorizationService
 
             IEnumerable<Claim> claims = await GetUserClaimsAsync(model);
             JwtSecurityToken token = _tokenFactory.CreateToken(model.UserName.ToString(), claims);
+            UserAuthInfo info = await GetUserInfoAsync(model);
+
             return new JWTTokenStatusResult()
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 IsAuthorized = true,
+                UserInfo = info,
             };
         }
 
         public abstract Task<IEnumerable<Claim>> GetUserClaimsAsync(AuthSignInModel model);
+        public abstract Task<UserAuthInfo> GetUserInfoAsync(AuthSignInModel model);
         public abstract Task<bool> VerifyUserAsync(AuthSignInModel model);
     }
 }

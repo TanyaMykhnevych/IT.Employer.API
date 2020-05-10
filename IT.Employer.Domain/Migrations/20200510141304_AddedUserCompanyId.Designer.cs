@@ -4,14 +4,16 @@ using IT.Employer.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IT.Employer.Domain.Migrations
 {
     [DbContext(typeof(ItEmployerDbContext))]
-    partial class ItEmployerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200510141304_AddedUserCompanyId")]
+    partial class AddedUserCompanyId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

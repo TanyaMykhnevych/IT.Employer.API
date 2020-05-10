@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IT.Employer.Domain.Models.CompanyN;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,5 +13,7 @@ namespace IT.Employer.Domain.Models.User
         public string LastName { get; set; }
         public bool IsActive { get; set; }
         public string Role { get; set; }
+        public Guid? CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }
