@@ -8,7 +8,7 @@ namespace IT.Employer.Services.Services.CompanyN
     public interface ICompanyService
     {
         CompanyDTO GetById(Guid id);
-        Task<Guid> Create(CompanyDTO company);
+        Task<Guid> Create(CompanyDTO company, Guid userId);
         Task Update(CompanyDTO company);
         Task Delete(Guid id);
         SearchResponseDTO<CompanyDTO> SearchCompanies(SearchCompanyParameterDTO parameters);

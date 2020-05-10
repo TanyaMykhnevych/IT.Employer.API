@@ -18,21 +18,29 @@ namespace IT.Employer.Services.Services.CompanyN
         private readonly ICompanyStore _store;
         private readonly ICompanySearchQueryBuilder _queryBuilder;
         private readonly IMapper _mapper;
+        private readonly IUserService _userService;
 
         public CompanyService(
             ICompanyStore store,
             ICompanySearchQueryBuilder queryBuilder,
-            IMapper mapper)
+            IMapper mapper,
+            IUserService userService)
         {
             _store = store;
             _queryBuilder = queryBuilder;
             _mapper = mapper;
+            _userService = userService;
         }
 
-        public async Task<Guid> Create(CompanyDTO companyDto)
+        public async Task<Guid> Create(CompanyDTO companyDto, Guid userId)
         {
             Company company = _mapper.Map<Company>(companyDto);
-            return await _store.Create(company);
+
+            Guid companyId = await _store.Create(company);
+
+            await _userService.SetCompany(userId, companyId);
+
+            return companyId;
         }
 
         public async Task Delete(Guid id)

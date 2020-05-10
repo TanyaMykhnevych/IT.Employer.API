@@ -12,5 +12,6 @@ namespace IT.Employer.Services.Services
         Task<AppUser> UpdateUserAsync(UpdateUserModel userModel);
         Task DeactivateUser(Guid userId);
         Task DeleteUser(Guid userId);
+        Task SetCompany(Guid userId, Guid companyId);
     }
 }

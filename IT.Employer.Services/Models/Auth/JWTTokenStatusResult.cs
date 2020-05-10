@@ -2,7 +2,8 @@
 {
     public class JWTTokenStatusResult
     {
-        public string Token { get; internal set; }
-        public bool IsAuthorized { get; internal set; }
+        public string Token { get; set; }
+        public bool IsAuthorized { get; set; }
+        public UserAuthInfo UserInfo { get; set; }
     }
 }

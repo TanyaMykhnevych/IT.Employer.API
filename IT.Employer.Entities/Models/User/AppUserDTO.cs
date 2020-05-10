@@ -1,4 +1,5 @@
 ﻿using IT.Employer.Entities.Models.Base;
+using System;
 
 namespace IT.Employer.Entities.Models.User
 {
@@ -10,5 +11,6 @@ namespace IT.Employer.Entities.Models.User
         public string Email { get; set; }
         public bool IsActive { get; set; }
         public string Role { get; set; }
+        public Guid? CompanyId { get; set; }
     }
 }

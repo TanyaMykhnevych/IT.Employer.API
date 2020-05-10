@@ -182,6 +182,9 @@ namespace IT.Employer.Domain.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -241,6 +244,8 @@ namespace IT.Employer.Domain.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -451,6 +456,13 @@ namespace IT.Employer.Domain.Migrations
                 });
 
             modelBuilder.Entity("IT.Employer.Domain.Models.TeamN.Team", b =>
+                {
+                    b.HasOne("IT.Employer.Domain.Models.CompanyN.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("IT.Employer.Domain.Models.User.AppUser", b =>
                 {
                     b.HasOne("IT.Employer.Domain.Models.CompanyN.Company", "Company")
                         .WithMany()

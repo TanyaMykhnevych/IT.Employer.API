@@ -105,6 +105,16 @@ namespace IT.Employer.Services.Services
             ValidateIdentityResult(deleteUserResult);
         }
 
+        public async Task SetCompany(Guid userId, Guid companyId)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userId.ToString());
+
+            user.CompanyId = companyId;
+
+            await _userManager.UpdateAsync(user);
+        }
+
+
         private void ValidateIdentityResult(IdentityResult result)
         {
             if (!result.Succeeded)
