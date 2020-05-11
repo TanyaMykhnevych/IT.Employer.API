@@ -24,7 +24,7 @@ namespace IT.Employer.Services.Services.UserAuthorizationService
 
             IEnumerable<Claim> claims = await GetUserClaimsAsync(model);
             JwtSecurityToken token = _tokenFactory.CreateToken(model.UserName.ToString(), claims);
-            UserAuthInfo info = await GetUserInfoAsync(model);
+            UserAuthInfo info = await GetUserInfoAsync(model.UserName);
 
             return new JWTTokenStatusResult()
             {
@@ -35,7 +35,7 @@ namespace IT.Employer.Services.Services.UserAuthorizationService
         }
 
         public abstract Task<IEnumerable<Claim>> GetUserClaimsAsync(AuthSignInModel model);
-        public abstract Task<UserAuthInfo> GetUserInfoAsync(AuthSignInModel model);
+        public abstract Task<UserAuthInfo> GetUserInfoAsync(string userName);
         public abstract Task<bool> VerifyUserAsync(AuthSignInModel model);
     }
 }

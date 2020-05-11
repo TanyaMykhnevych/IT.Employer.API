@@ -19,6 +19,12 @@ namespace IT.Employer.Services.Stores
         public async Task<Guid> Create(Employee employee)
         {
             await _context.AddAsync(employee);
+
+            //if (employee.Characteristics?.Count > 0)
+            //{
+            //    await _context.AddAsync(employee.Characteristics);
+            //}
+
             await _context.SaveChangesAsync();
 
             return employee.Id;
