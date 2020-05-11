@@ -48,9 +48,9 @@ namespace IT.Employer.Services.Services.UserAuthorizationService
             return result.Succeeded;
         }
 
-        public async override Task<UserAuthInfo> GetUserInfoAsync(AuthSignInModel model)
+        public async override Task<UserAuthInfo> GetUserInfoAsync(string userName)
         {
-            AppUser user = await _userManager.FindByNameAsync(model.UserName);
+            AppUser user = await _userManager.FindByNameAsync(userName);
 
             UserAuthInfo info = new UserAuthInfo
             {

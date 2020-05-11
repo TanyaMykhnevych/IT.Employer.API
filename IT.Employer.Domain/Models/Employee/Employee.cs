@@ -13,12 +13,16 @@ namespace IT.Employer.Domain.Models.EmployeeN
         public string LastName { get; set; }
         public string Description { get; set; }
         public DateTime? BirthDate { get; set; }
+        public string ImageUrl { get; set; }
 
         public Profession Profession { get; set; }
         public Position Position { get; set; }
         public Technology PrimaryTechnology { get; set; }
+        public decimal HourRate { get; set; }
 
         public float ExperienceYears { get; set; }
+        public DateTime AvailableUntil { get; set; }
+        public bool Inactive { get; set; }
 
         public string Email { get; set; }
         public string Skype { get; set; }

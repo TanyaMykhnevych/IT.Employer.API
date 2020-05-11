@@ -25,5 +25,20 @@ namespace IT.Employer.WebAPI.Controllers.Auth
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("user-info")]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            string currentUserName = User.Identity.Name;
+            UserAuthInfo userInfo = await _authorizationService.GetUserInfoAsync(currentUserName);
+
+            if (userInfo == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(userInfo);
+        }
     }
 }

@@ -13,12 +13,17 @@ namespace IT.Employer.Entities.Models.EmployeeN
         public string LastName { get; set; }
         public string Description { get; set; }
         public DateTime? BirthDate { get; set; }
+        public string ImageUrl { get; set; }
 
         public ProfessionDTO Profession { get; set; }
         public PositionDTO Position { get; set; }
         public TechnologyDTO PrimaryTechnology { get; set; }
+        public decimal HourRate { get; set; }
+        public decimal HourRateForHiring { get; set; }
 
         public float ExperienceYears { get; set; }
+        public DateTime AvailableUntil { get; set; }
+        public bool Inactive { get; set; }
 
         public string Email { get; set; }
         public string Skype { get; set; }
@@ -29,6 +34,6 @@ namespace IT.Employer.Entities.Models.EmployeeN
 
         public CompanyDTO Company { get; set; }
         public TeamDTO Team { get; set; }
-        public List<CharacteristicDTO> Сharacteristics { get; set; }
+        public List<CharacteristicDTO> Characteristics { get; set; }
     }
 }
