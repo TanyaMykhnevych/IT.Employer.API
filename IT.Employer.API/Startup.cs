@@ -2,6 +2,7 @@ using AutoMapper;
 using IT.Employer.Services.Extensions;
 using IT.Employer.Services.MapProfile;
 using IT.Employer.Services.Models.Auth;
+using IT.Employer.Services.Models.Settings;
 using IT.Employer.WebAPI.Converters;
 using IT.Employer.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -91,6 +92,8 @@ namespace IT.Employer.API
             });
             services.AddSignalR();
             services.AddRouting(options => options.LowercaseUrls = true);
+
+            services.Configure<AppSettings>(Configuration.GetSection("ApplicationSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,8 +4,12 @@ using IT.Employer.Domain.Models.EmployeeN;
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.EmployeeN;
 using IT.Employer.Services.Exceptions.Common;
+using IT.Employer.Services.Extensions;
+using IT.Employer.Services.Models.Settings;
 using IT.Employer.Services.QueryBuilders.EmployeeN;
+using IT.Employer.Services.Services.PricePolicies;
 using IT.Employer.Services.Stores;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +22,18 @@ namespace IT.Employer.Services.Services.EmployeeN
         private readonly IEmployeeStore _store;
         private readonly IEmployeeSearchQueryBuilder _queryBuilder;
         private readonly IMapper _mapper;
+        private readonly IPricePolicyService _pricePolicyService;
 
         public EmployeeService(
             IEmployeeStore store,
             IEmployeeSearchQueryBuilder queryBuilder,
-            IMapper mapper)
+            IMapper mapper,
+            IPricePolicyService pricePolicyService)
         {
             _store = store;
             _queryBuilder = queryBuilder;
             _mapper = mapper;
+            _pricePolicyService = pricePolicyService;
         }
 
         public async Task<Guid> Create(EmployeeDTO employeeDto)
@@ -43,7 +50,10 @@ namespace IT.Employer.Services.Services.EmployeeN
         public EmployeeDTO GetById(Guid id)
         {
             Employee employee = _store.GetById(id);
-            return _mapper.Map<EmployeeDTO>(employee);
+            EmployeeDTO result = _mapper.Map<EmployeeDTO>(employee);
+            SetHiringRate(result, 1);
+
+            return result;
         }
 
         public async Task Update(EmployeeDTO employeeDto)
@@ -59,7 +69,7 @@ namespace IT.Employer.Services.Services.EmployeeN
             SearchResponseDTO<Employee> result = SearchEmployeesWithQuery(parameters);
             return new SearchResponseDTO<EmployeeDTO>
             {
-                Items = _mapper.Map<IEnumerable<EmployeeDTO>>(result.Items),
+                Items = _mapper.Map<IEnumerable<EmployeeDTO>>(result.Items).Do(employee => SetHiringRate(employee, 1)),
                 TotalCount = result.TotalCount
             };
         }
@@ -109,6 +119,11 @@ namespace IT.Employer.Services.Services.EmployeeN
                                                      .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
                                                      .Build();
             return query;
+        }
+
+        private void SetHiringRate(EmployeeDTO employee, int teamSize)
+        {
+            employee.HiringHourRate = _pricePolicyService.CalculateHiringHourPrice(employee.HourRate, teamSize);
         }
     }
 }
