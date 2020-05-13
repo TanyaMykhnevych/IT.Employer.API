@@ -5,6 +5,7 @@ using IT.Employer.Services.QueryBuilders.VacancyN;
 using IT.Employer.Services.Services;
 using IT.Employer.Services.Services.CompanyN;
 using IT.Employer.Services.Services.EmployeeN;
+using IT.Employer.Services.Services.PricePolicies;
 using IT.Employer.Services.Services.TeamN;
 using IT.Employer.Services.Services.UserAuthorizationService;
 using IT.Employer.Services.Services.VacancyN;
@@ -35,6 +36,7 @@ namespace IT.Employer.WebAPI.Extensions
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IVacancyService, VacancyService>();
             services.AddTransient<ITeamService, TeamService>();
+            services.AddTransient<IPricePolicyService, PricePolicyService>();
 
             // query builders
             services.AddTransient<IEmployeeSearchQueryBuilder, EmployeeSearchQueryBuilder>();

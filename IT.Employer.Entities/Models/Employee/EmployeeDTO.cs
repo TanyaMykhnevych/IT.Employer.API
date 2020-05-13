@@ -19,7 +19,7 @@ namespace IT.Employer.Entities.Models.EmployeeN
         public PositionDTO Position { get; set; }
         public TechnologyDTO PrimaryTechnology { get; set; }
         public decimal HourRate { get; set; }
-        public decimal HourRateForHiring { get; set; }
+        public decimal HiringHourRate { get; set; }
 
         public float ExperienceYears { get; set; }
         public DateTime AvailableUntil { get; set; }
