@@ -36,6 +36,17 @@ namespace IT.Employer.WebAPI.Controllers.EmployeeN
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("filter/active/single")]
+        public IActionResult FilterSingleActiveEmployees([FromQuery]SearchEmployeeParameterDTO parameters)
+        {
+            if (parameters == null) throw new ArgumentNullException(nameof(parameters));
+
+            SearchResponseDTO<EmployeeDTO> result = _service.SearchSingleActiveEmployees(parameters);
+
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]EmployeeDTO model)
         {

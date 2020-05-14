@@ -16,5 +16,7 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
         IEmployeeSearchQueryBuilder SetExperience(int? from, int? to);
         IEmployeeSearchQueryBuilder SetCompanyId(Guid? companyId);
         IEmployeeSearchQueryBuilder SetTeamId(Guid? teamId);
+        IEmployeeSearchQueryBuilder OnlyActive();
+        IEmployeeSearchQueryBuilder WithoutTeam();
     }
 }

@@ -24,6 +24,13 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
             return resultQuery;
         }
 
+        public IEmployeeSearchQueryBuilder OnlyActive()
+        {
+            _query = _query.Where(e => !e.Inactive);
+
+            return this;
+        }
+
         public IEmployeeSearchQueryBuilder SetBaseEmployeesInfo(Boolean asNoTracking = true, Boolean includeRelated = false)
         {
             _query = _context.Employees;
@@ -121,6 +128,13 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
             {
                 _query = _query.Where(e => e.TeamId == teamId.Value);
             }
+
+            return this;
+        }
+
+        public IEmployeeSearchQueryBuilder WithoutTeam()
+        {
+            _query = _query.Where(e => e.TeamId == null);
 
             return this;
         }

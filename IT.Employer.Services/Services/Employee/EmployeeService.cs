@@ -5,11 +5,9 @@ using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.EmployeeN;
 using IT.Employer.Services.Exceptions.Common;
 using IT.Employer.Services.Extensions;
-using IT.Employer.Services.Models.Settings;
 using IT.Employer.Services.QueryBuilders.EmployeeN;
 using IT.Employer.Services.Services.PricePolicies;
 using IT.Employer.Services.Stores;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,14 +64,30 @@ namespace IT.Employer.Services.Services.EmployeeN
         {
             if (parameters == null) throw new ArgumentNullException(nameof(parameters));
 
-            SearchResponseDTO<Employee> result = SearchEmployeesWithQuery(parameters);
+            SearchResponseDTO<Employee> result = SearchEmployeesWithQuery(parameters, GetEmployeesSearchQuery);
             return new SearchResponseDTO<EmployeeDTO>
             {
                 Items = _mapper.Map<IEnumerable<EmployeeDTO>>(result.Items).Do(employee => SetHiringRate(employee, 1)),
                 TotalCount = result.TotalCount
             };
         }
-        private SearchResponseDTO<Employee> SearchEmployeesWithQuery(SearchEmployeeParameterDTO parameters)
+
+        public SearchResponseDTO<EmployeeDTO> SearchSingleActiveEmployees(SearchEmployeeParameterDTO parameters)
+        {
+            if (parameters == null) throw new ArgumentNullException(nameof(parameters));
+
+            SearchResponseDTO<Employee> result = SearchEmployeesWithQuery(parameters, GetSingleActiveEmployeesSearchQuery);
+
+            return new SearchResponseDTO<EmployeeDTO>
+            {
+                Items = _mapper.Map<IEnumerable<EmployeeDTO>>(result.Items).Do(employee => SetHiringRate(employee, 1)),
+                TotalCount = result.TotalCount
+            };
+        }
+
+        private SearchResponseDTO<Employee> SearchEmployeesWithQuery(
+            SearchEmployeeParameterDTO parameters,
+            Func<SearchEmployeeParameterDTO, IQueryable<Employee>> getEmployeeFunction)
         {
             if (parameters == null) throw new ArgumentNullException(nameof(parameters));
 
@@ -83,7 +97,7 @@ namespace IT.Employer.Services.Services.EmployeeN
                 throw new InvalidPaginationParametersException();
             }
 
-            IQueryable<Employee> query = GetEmployeesSearchQuery(parameters);
+            IQueryable<Employee> query = getEmployeeFunction(parameters);
 
             int totalCount = query.Count();
 
@@ -104,6 +118,23 @@ namespace IT.Employer.Services.Services.EmployeeN
                 Items = employees,
                 TotalCount = totalCount
             };
+        }
+
+        private IQueryable<Employee> GetSingleActiveEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
+        {
+            IQueryable<Employee> query = _queryBuilder.SetBaseEmployeesInfo()
+                                                     .SetFirstName(parameters.FirstName)
+                                                     .SetLastName(parameters.LastName)
+                                                     .SetPosition(_mapper.Map<Position?>(parameters.Position))
+                                                     .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
+                                                     .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
+                                                     .SetCompanyId(parameters.CompanyId)
+                                                     .SetTeamId(parameters.TeamId)
+                                                     .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
+                                                     .OnlyActive()
+                                                     .WithoutTeam()
+                                                     .Build();
+            return query;
         }
 
         private IQueryable<Employee> GetEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
