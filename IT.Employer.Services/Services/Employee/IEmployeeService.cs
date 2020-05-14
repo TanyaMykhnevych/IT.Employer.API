@@ -12,5 +12,6 @@ namespace IT.Employer.Services.Services.EmployeeN
         Task Update(EmployeeDTO employee);
         Task Delete(Guid id);
         SearchResponseDTO<EmployeeDTO> SearchEmployees(SearchEmployeeParameterDTO parameters);
+        SearchResponseDTO<EmployeeDTO> SearchSingleActiveEmployees(SearchEmployeeParameterDTO parameters);
     }
 }
