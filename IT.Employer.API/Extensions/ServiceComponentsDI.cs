@@ -1,6 +1,7 @@
 ﻿using IT.Employer.Services.Factories.AuthTokenFactory;
 using IT.Employer.Services.QueryBuilders.CompanyN;
 using IT.Employer.Services.QueryBuilders.EmployeeN;
+using IT.Employer.Services.QueryBuilders.TeamN;
 using IT.Employer.Services.QueryBuilders.VacancyN;
 using IT.Employer.Services.Services;
 using IT.Employer.Services.Services.CompanyN;
@@ -42,6 +43,7 @@ namespace IT.Employer.WebAPI.Extensions
             services.AddTransient<IEmployeeSearchQueryBuilder, EmployeeSearchQueryBuilder>();
             services.AddTransient<IVacancySearchQueryBuilder, VacancySearchQueryBuilder>();
             services.AddTransient<ICompanySearchQueryBuilder, CompanySearchQueryBuilder>();
+            services.AddTransient<ITeamSearchQueryBuilder, TeamSearchQueryBuilder>();
 
             services.TryAddSingleton<ISystemClock, SystemClock>();
         }

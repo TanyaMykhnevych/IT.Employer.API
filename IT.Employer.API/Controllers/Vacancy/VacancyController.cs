@@ -4,6 +4,7 @@ using IT.Employer.Entities.Models.Vacancy;
 using IT.Employer.Entities.Models.VacancyN;
 using IT.Employer.Services.Services.VacancyN;
 using IT.Employer.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ namespace IT.Employer.WebAPI.Controllers.VacancyN
 {
     [Route("api/[controller]")]
     [ServiceFilter(typeof(CustomValidateModelAttribute))]
+    [Authorize]
     public class VacancyController : Controller
     {
         private readonly IVacancyService _service;

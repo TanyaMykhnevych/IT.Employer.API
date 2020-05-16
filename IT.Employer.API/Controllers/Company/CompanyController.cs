@@ -3,6 +3,7 @@ using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Services.Services.CompanyN;
 using IT.Employer.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
 {
     [Route("api/[controller]")]
     [ServiceFilter(typeof(CustomValidateModelAttribute))]
+    [Authorize]
     public class CompanyController : Controller
     {
         private readonly ICompanyService _service;

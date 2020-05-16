@@ -2,6 +2,7 @@
 using IT.Employer.Entities.Models.EmployeeN;
 using IT.Employer.Services.Services.EmployeeN;
 using IT.Employer.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace IT.Employer.WebAPI.Controllers.EmployeeN
 {
     [Route("api/[controller]")]
     [ServiceFilter(typeof(CustomValidateModelAttribute))]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _service;
