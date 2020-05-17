@@ -1,5 +1,6 @@
 using AutoMapper;
 using IT.Employer.Services.Extensions;
+using IT.Employer.Services.HubN;
 using IT.Employer.Services.MapProfile;
 using IT.Employer.Services.Models.Auth;
 using IT.Employer.Services.Models.Settings;
@@ -123,6 +124,7 @@ namespace IT.Employer.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
 
             app.UseSwagger();
@@ -130,6 +132,7 @@ namespace IT.Employer.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ITEmployer API V1");
             });
+
         }
     }
 }
