@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.TeamN;
+using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.Team;
 using IT.Employer.Services.Exceptions.Common;
@@ -64,7 +66,8 @@ namespace IT.Employer.Services.Services.TeamN
                 Description = i.Description,
                 CompanyName = i.Company?.Name,
                 CreatedOn = i.CreatedOn,
-                NumberOfMembers = i.Members.Count()
+                NumberOfMembers = i.Members.Count(),
+                Technologies = _mapper.Map<IEnumerable<TechnologyDTO>>(i.Members.Select(m => m.PrimaryTechnology).Distinct()),
             });
 
             return new SearchResponseDTO<TeamSearchItemDTO>
@@ -109,9 +112,14 @@ namespace IT.Employer.Services.Services.TeamN
 
         private IQueryable<Team> GetTeamsSearchQuery(SearchTeamParameterDTO parameters)
         {
+            List<Technology> technologies = string.IsNullOrEmpty(parameters.Technologies) ?
+                new List<Technology>() :
+                parameters.Technologies.Split(',').Select(t => (Technology)Convert.ToInt32(t)).ToList();
+
             IQueryable<Team> query = _queryBuilder.SetBaseTeamsInfo()
                                          .SetCompanyId(parameters.CompanyId)
                                          .SetSearchTerm(parameters.SearchTerm)
+                                         .SetTechnologies(technologies)
                                          .SetNumberOfMembers(parameters.MinNumberOfMembers, parameters.MaxNumberOfMembers)
                                          .Build();
             return query;

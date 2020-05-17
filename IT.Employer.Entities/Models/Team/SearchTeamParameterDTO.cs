@@ -1,5 +1,6 @@
 ﻿using IT.Employer.Entities.Models.Base;
 using System;
+
 namespace IT.Employer.Entities.Models.Team
 {
     public class SearchTeamParameterDTO : PaginationModelDTO
@@ -8,5 +9,6 @@ namespace IT.Employer.Entities.Models.Team
         public string SearchTerm { get; set; }
         public int? MinNumberOfMembers { get; set; }
         public int? MaxNumberOfMembers { get; set; }
+        public string Technologies { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using IT.Employer.Domain;
+using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.TeamN;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace IT.Employer.Services.QueryBuilders.TeamN
@@ -69,6 +71,16 @@ namespace IT.Employer.Services.QueryBuilders.TeamN
             if (!string.IsNullOrWhiteSpace(searchterm))
             {
                 _query = _query.Where(e => e.Name.Contains(searchterm));
+            }
+
+            return this;
+        }
+
+        public ITeamSearchQueryBuilder SetTechnologies(List<Technology> technologies)
+        {
+            if (technologies != null && technologies.Any())
+            {
+                _query = _query.Where(e => e.Members.Select(m => m.PrimaryTechnology).Where(t => technologies.Contains(t)).Count() == technologies.Count);
             }
 
             return this;

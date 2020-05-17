@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IT.Employer.Entities.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace IT.Employer.Entities.Models.Team
 {
@@ -9,5 +11,6 @@ namespace IT.Employer.Entities.Models.Team
         public int NumberOfMembers { get; set; }
         public string CompanyName { get; set; }
         public DateTime CreatedOn { get; set; }
+        public IEnumerable<TechnologyDTO> Technologies { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using IT.Employer.Domain.Models.TeamN;
+﻿using IT.Employer.Domain.Enums;
+using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Services.QueryBuilders.Base;
 using System;
+using System.Collections.Generic;
 
 namespace IT.Employer.Services.QueryBuilders.TeamN
 {
@@ -10,5 +12,6 @@ namespace IT.Employer.Services.QueryBuilders.TeamN
         ITeamSearchQueryBuilder SetCompanyId(Guid? companyId);
         ITeamSearchQueryBuilder SetSearchTerm(string searchTerm);
         ITeamSearchQueryBuilder SetNumberOfMembers(int? from, int? to);
+        ITeamSearchQueryBuilder SetTechnologies(List<Technology> technologies);
     }
 }
