@@ -18,5 +18,6 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
         IEmployeeSearchQueryBuilder SetTeamId(Guid? teamId);
         IEmployeeSearchQueryBuilder OnlyActive();
         IEmployeeSearchQueryBuilder WithoutTeam();
+        IEmployeeSearchQueryBuilder SetHiringHourRate(decimal? min, decimal? max);
     }
 }
