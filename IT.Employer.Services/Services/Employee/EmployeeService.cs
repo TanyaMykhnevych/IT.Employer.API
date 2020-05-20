@@ -122,39 +122,48 @@ namespace IT.Employer.Services.Services.EmployeeN
 
         private IQueryable<Employee> GetSingleActiveEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
         {
-            IQueryable<Employee> query = _queryBuilder.SetBaseEmployeesInfo()
-                                                     .SetFirstName(parameters.FirstName)
-                                                     .SetLastName(parameters.LastName)
-                                                     .SetPosition(_mapper.Map<Position?>(parameters.Position))
-                                                     .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
-                                                     .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
-                                                     .SetCompanyId(parameters.CompanyId)
-                                                     .SetTeamId(parameters.TeamId)
-                                                     .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
-                                                     .OnlyActive()
-                                                     .WithoutTeam()
-                                                     .Build();
+            IQueryable<Employee> query = GetBaseBuilder(_queryBuilder, parameters)
+                                        .OnlyActive()
+                                        .WithoutTeam()
+                                        .Build();
             return query;
         }
 
         private IQueryable<Employee> GetEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
         {
-            IQueryable<Employee> query = _queryBuilder.SetBaseEmployeesInfo()
-                                                     .SetFirstName(parameters.FirstName)
-                                                     .SetLastName(parameters.LastName)
-                                                     .SetPosition(_mapper.Map<Position?>(parameters.Position))
-                                                     .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
-                                                     .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
-                                                     .SetCompanyId(parameters.CompanyId)
-                                                     .SetTeamId(parameters.TeamId)
-                                                     .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
-                                                     .Build();
+            IQueryable<Employee> query = GetBaseBuilder(_queryBuilder, parameters).Build();
+
             return query;
+        }
+
+        private IEmployeeSearchQueryBuilder GetBaseBuilder(IEmployeeSearchQueryBuilder queryBuilder, SearchEmployeeParameterDTO parameters)
+        {
+            return _queryBuilder.SetBaseEmployeesInfo()
+                                .SetFirstName(parameters.FirstName)
+                                .SetLastName(parameters.LastName)
+                                .SetPosition(_mapper.Map<Position?>(parameters.Position))
+                                .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
+                                .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
+                                .SetCompanyId(parameters.CompanyId)
+                                .SetTeamId(parameters.TeamId)
+                                .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
+                                .SetHiringHourRate(
+                                    parameters.MinHiringHourRate.HasValue ? GetInitialRate(parameters.MinHiringHourRate.Value) : (decimal?)null,
+                                    parameters.MaxHiringHourRate.HasValue ? GetInitialRate(parameters.MaxHiringHourRate.Value) : (decimal?)null
+                                );
         }
 
         private void SetHiringRate(EmployeeDTO employee, int teamSize)
         {
-            employee.HiringHourRate = _pricePolicyService.CalculateHiringHourPrice(employee.HourRate, teamSize);
+            if (employee != null)
+            {
+                employee.HiringHourRate = _pricePolicyService.CalculateHiringHourPrice(employee.HourRate, teamSize);
+            }
+        }
+
+        private decimal GetInitialRate(decimal hiringHourRate)
+        {
+            return _pricePolicyService.CalculateInitialHourPrice(hiringHourRate, 1);
         }
     }
 }

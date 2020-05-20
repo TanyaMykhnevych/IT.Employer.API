@@ -138,5 +138,20 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
 
             return this;
         }
+
+        public IEmployeeSearchQueryBuilder SetHiringHourRate(decimal? min, decimal? max)
+        {
+            if (min.HasValue)
+            {
+                _query = _query.Where(e => e.HourRate >= min.Value);
+            }
+
+            if (max.HasValue)
+            {
+                _query = _query.Where(e => e.HourRate <= max.Value);
+            }
+
+            return this;
+        }
     }
 }
