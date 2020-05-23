@@ -4,14 +4,16 @@ using IT.Employer.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IT.Employer.Domain.Migrations
 {
     [DbContext(typeof(ItEmployerDbContext))]
-    partial class ItEmployerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200522202646_HireMigration")]
+    partial class HireMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,14 +189,11 @@ namespace IT.Employer.Domain.Migrations
                     b.Property<DateTime>("HiredTo")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("HiringCompanyId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<byte>("Status")
-                        .HasColumnType("tinyint");
 
                     b.Property<Guid?>("TeamId")
                         .HasColumnType("uniqueidentifier");
@@ -207,8 +206,6 @@ namespace IT.Employer.Domain.Migrations
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("HiringCompanyId");
 
                     b.HasIndex("TeamId");
 
@@ -534,12 +531,6 @@ namespace IT.Employer.Domain.Migrations
                     b.HasOne("IT.Employer.Domain.Models.EmployeeN.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
-
-                    b.HasOne("IT.Employer.Domain.Models.CompanyN.Company", "HiringCompany")
-                        .WithMany()
-                        .HasForeignKey("HiringCompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.HasOne("IT.Employer.Domain.Models.TeamN.Team", "Team")
                         .WithMany()

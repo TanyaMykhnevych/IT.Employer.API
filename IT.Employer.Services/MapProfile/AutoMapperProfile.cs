@@ -3,6 +3,7 @@ using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.Base;
 using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Domain.Models.EmployeeN;
+using IT.Employer.Domain.Models.Hiring;
 using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Domain.Models.User;
 using IT.Employer.Domain.Models.VacancyN;
@@ -10,6 +11,7 @@ using IT.Employer.Entities.Enums;
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Entities.Models.EmployeeN;
+using IT.Employer.Entities.Models.Hiring;
 using IT.Employer.Entities.Models.Team;
 using IT.Employer.Entities.Models.User;
 using IT.Employer.Entities.Models.Vacancy;
@@ -56,6 +58,7 @@ namespace IT.Employer.Services.MapProfile
             CreateMap<Characteristic, CharacteristicDTO>().ForMember(c => c.Employee, opts => opts.Ignore()).ReverseMap();
             CreateMap<Vacancy, VacancyDTO>().ReverseMap();
             CreateMap<Team, TeamDTO>().ReverseMap();
+            CreateMap<Hire, HireDTO>().ReverseMap();
         }
     }
 }
