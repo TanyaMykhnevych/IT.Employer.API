@@ -99,6 +99,10 @@ namespace IT.Employer.Services.QueryBuilders.VacancyN
             {
                 _query = _query.Where(e => e.UserId == userId);
             }
+            else if(!myVacancies && userId.HasValue)
+            {
+                _query = _query.Where(e => e.UserId != userId);
+            }
 
             return this;
         }

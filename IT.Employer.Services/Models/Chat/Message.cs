@@ -12,5 +12,6 @@ namespace IT.Employer.Services.Models.Chat
         public string Text { get; set; }
         public DateTime When { get; set; }
         public Guid ReceiverId { get; set; }
+        public string Type { get; set; }
     }
 }

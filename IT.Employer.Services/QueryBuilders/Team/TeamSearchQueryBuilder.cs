@@ -85,5 +85,18 @@ namespace IT.Employer.Services.QueryBuilders.TeamN
 
             return this;
         }
+        public ITeamSearchQueryBuilder SetMyTeams(bool myTeams, Guid? myCompanyId)
+        {
+            if (myTeams && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.CompanyId == myCompanyId);
+            }
+            else if (!myTeams && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.CompanyId != myCompanyId);
+            }
+
+            return this;
+        }
     }
 }

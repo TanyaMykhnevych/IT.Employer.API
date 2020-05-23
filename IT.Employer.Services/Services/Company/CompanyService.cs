@@ -111,6 +111,7 @@ namespace IT.Employer.Services.Services.CompanyN
                                                      .SetType(_mapper.Map<CompanyType?>(parameters.Type))
                                                      .SetSize(_mapper.Map<CompanySize?>(parameters.Size))
                                                      .SetSearchTerm(parameters.SearchTerm)
+                                                     .SetMyCompanies(parameters.MyCompanies, parameters.CurrentUserCompanyId)
                                                      .Build();
             return query;
         }

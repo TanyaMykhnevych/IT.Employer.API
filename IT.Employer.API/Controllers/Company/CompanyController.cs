@@ -2,6 +2,7 @@
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.CompanyN;
 using IT.Employer.Services.Services.CompanyN;
+using IT.Employer.WebAPI.Controllers.Base;
 using IT.Employer.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,16 +15,13 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
     [Route("api/[controller]")]
     [ServiceFilter(typeof(CustomValidateModelAttribute))]
     [Authorize]
-    public class CompanyController : Controller
+    public class CompanyController : BaseUserAccessController
     {
         private readonly ICompanyService _service;
-        private readonly UserManager<AppUser> _userManager;
 
-        public CompanyController(ICompanyService service, UserManager<AppUser> userManager)
+        public CompanyController(ICompanyService service, UserManager<AppUser> userManager) : base(userManager)
         {
             _service = service;
-            _service = service;
-            _userManager = userManager;
         }
 
         [HttpGet("{id:guid}")]
@@ -34,10 +32,11 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
 
         [HttpGet]
         [Route("filter")]
-        public IActionResult Filter([FromQuery]SearchCompanyParameterDTO parameters)
+        public async Task<IActionResult> Filter([FromQuery]SearchCompanyParameterDTO parameters)
         {
             if (parameters == null) throw new ArgumentNullException(nameof(parameters));
 
+            parameters.CurrentUserCompanyId = (await GetCurrentUser()).CompanyId;
             SearchResponseDTO<CompanyDTO> result = _service.SearchCompanies(parameters);
 
             return Ok(result);
@@ -46,7 +45,7 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CompanyDTO model)
         {
-            Guid created = await _service.Create(model, await GetCurrentUserId());
+            Guid created = await _service.Create(model, (await GetCurrentUserId()).GetValueOrDefault());
 
             return Ok(_service.GetById(created));
         }
@@ -68,13 +67,6 @@ namespace IT.Employer.WebAPI.Controllers.CompanyN
             await _service.Delete(id);
 
             return Ok();
-        }
-
-
-        private async Task<Guid> GetCurrentUserId()
-        {
-            string name = _userManager.GetUserName(User);
-            return (await _userManager.FindByNameAsync(name)).Id;
         }
     }
 }

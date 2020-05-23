@@ -153,5 +153,19 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
 
             return this;
         }
+
+        public IEmployeeSearchQueryBuilder SetMyEmployees(bool myEmployees, Guid? myCompanyId)
+        {
+            if (myEmployees && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.CompanyId == myCompanyId);
+            }
+            else if (!myEmployees && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.CompanyId != myCompanyId);
+            }
+
+            return this;
+        }
     }
 }

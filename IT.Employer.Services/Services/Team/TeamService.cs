@@ -75,6 +75,7 @@ namespace IT.Employer.Services.Services.TeamN
                 Name = i.Name,
                 Description = i.Description,
                 CompanyName = i.Company?.Name,
+                CompanyId = i.CompanyId,
                 CreatedOn = i.CreatedOn,
                 NumberOfMembers = i.Members.Count(),
                 HourHiringRate = GetTeamHiringRate(i.Members),
@@ -131,6 +132,7 @@ namespace IT.Employer.Services.Services.TeamN
                                          .SetCompanyId(parameters.CompanyId)
                                          .SetSearchTerm(parameters.SearchTerm)
                                          .SetTechnologies(technologies)
+                                         .SetMyTeams(parameters.MyTeams, parameters.CurrentUserCompanyId)
                                          .SetNumberOfMembers(parameters.MinNumberOfMembers, parameters.MaxNumberOfMembers)
                                          .Build();
             return query;

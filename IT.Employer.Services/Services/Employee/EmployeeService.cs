@@ -122,7 +122,7 @@ namespace IT.Employer.Services.Services.EmployeeN
 
         private IQueryable<Employee> GetSingleActiveEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
         {
-            IQueryable<Employee> query = GetBaseBuilder(_queryBuilder, parameters)
+            IQueryable<Employee> query = GetBaseBuilder(parameters)
                                         .OnlyActive()
                                         .WithoutTeam()
                                         .Build();
@@ -131,20 +131,21 @@ namespace IT.Employer.Services.Services.EmployeeN
 
         private IQueryable<Employee> GetEmployeesSearchQuery(SearchEmployeeParameterDTO parameters)
         {
-            IQueryable<Employee> query = GetBaseBuilder(_queryBuilder, parameters).Build();
+            IQueryable<Employee> query = GetBaseBuilder(parameters).Build();
 
             return query;
         }
 
-        private IEmployeeSearchQueryBuilder GetBaseBuilder(IEmployeeSearchQueryBuilder queryBuilder, SearchEmployeeParameterDTO parameters)
+        private IEmployeeSearchQueryBuilder GetBaseBuilder(SearchEmployeeParameterDTO parameters)
         {
-            return _queryBuilder.SetBaseEmployeesInfo()
+            return _queryBuilder.SetBaseEmployeesInfo(true, true)
                                 .SetFirstName(parameters.FirstName)
                                 .SetLastName(parameters.LastName)
                                 .SetPosition(_mapper.Map<Position?>(parameters.Position))
                                 .SetProfession(_mapper.Map<Profession?>(parameters.Profession))
                                 .SetPrimaryTechnology(_mapper.Map<Technology?>(parameters.PrimaryTechnology))
                                 .SetCompanyId(parameters.CompanyId)
+                                .SetMyEmployees(parameters.MyEmployees, parameters.CurrentUserCompanyId)
                                 .SetTeamId(parameters.TeamId)
                                 .SetExperience(parameters.ExperienceFrom, parameters.ExperienceTo)
                                 .SetHiringHourRate(

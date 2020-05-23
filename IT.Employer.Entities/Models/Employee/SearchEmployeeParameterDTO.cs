@@ -19,6 +19,8 @@ namespace IT.Employer.Entities.Models.EmployeeN
         public int? MaxHiringHourRate { get; set; }
 
         public Guid? CompanyId { get; set; }
+        public Guid? CurrentUserCompanyId { get; set; }
         public Guid? TeamId { get; set; }
+        public bool MyEmployees { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.Vacancy;
 using IT.Employer.Entities.Models.VacancyN;
 using IT.Employer.Services.Services.VacancyN;
+using IT.Employer.WebAPI.Controllers.Base;
 using IT.Employer.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,15 +16,14 @@ namespace IT.Employer.WebAPI.Controllers.VacancyN
     [Route("api/[controller]")]
     [ServiceFilter(typeof(CustomValidateModelAttribute))]
     [Authorize]
-    public class VacancyController : Controller
+    public class VacancyController : BaseUserAccessController
     {
         private readonly IVacancyService _service;
         private readonly UserManager<AppUser> _userManager;
 
-        public VacancyController(IVacancyService service, UserManager<AppUser> userManager)
+        public VacancyController(IVacancyService service, UserManager<AppUser> userManager): base(userManager)
         {
             _service = service;
-            _userManager = userManager;
         }
 
         [HttpGet("{id:guid}")]
@@ -70,12 +70,6 @@ namespace IT.Employer.WebAPI.Controllers.VacancyN
             await _service.Delete(id);
 
             return Ok();
-        }
-
-        private async Task<Guid?> GetCurrentUserId()
-        {
-            string name = _userManager.GetUserName(User);
-            return (await _userManager.FindByNameAsync(name))?.Id;
         }
     }
 }

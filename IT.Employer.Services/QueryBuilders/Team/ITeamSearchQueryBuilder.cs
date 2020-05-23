@@ -13,5 +13,6 @@ namespace IT.Employer.Services.QueryBuilders.TeamN
         ITeamSearchQueryBuilder SetSearchTerm(string searchTerm);
         ITeamSearchQueryBuilder SetNumberOfMembers(int? from, int? to);
         ITeamSearchQueryBuilder SetTechnologies(List<Technology> technologies);
+        ITeamSearchQueryBuilder SetMyTeams(bool myTeams, Guid? myCompanyId);
     }
 }

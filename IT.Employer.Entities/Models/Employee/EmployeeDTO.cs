@@ -30,6 +30,7 @@ namespace IT.Employer.Entities.Models.EmployeeN
         public string LinkedIn { get; set; }
 
         public Guid? CompanyId { get; set; }
+        public string CompanyName { get; set; }
         public Guid? TeamId { get; set; }
 
         public CompanyDTO Company { get; set; }

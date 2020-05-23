@@ -62,5 +62,19 @@ namespace IT.Employer.Services.QueryBuilders.CompanyN
 
             return this;
         }
+
+        public ICompanySearchQueryBuilder SetMyCompanies(bool myCompany, Guid? myCompanyId)
+        {
+            if (myCompany && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.Id == myCompanyId);
+            }
+            else if (!myCompany && myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => e.Id != myCompanyId);
+            }
+
+            return this;
+        }
     }
 }
