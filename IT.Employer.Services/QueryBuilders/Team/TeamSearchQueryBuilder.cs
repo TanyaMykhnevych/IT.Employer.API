@@ -95,6 +95,10 @@ namespace IT.Employer.Services.QueryBuilders.TeamN
             {
                 _query = _query.Where(e => e.CompanyId != myCompanyId);
             }
+            else if (myTeams && !myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => false);
+            }
 
             return this;
         }

@@ -164,6 +164,10 @@ namespace IT.Employer.Services.QueryBuilders.EmployeeN
             {
                 _query = _query.Where(e => e.CompanyId != myCompanyId);
             }
+            else if (myEmployees && !myCompanyId.HasValue)
+            {
+                _query = _query.Where(e => false);
+            }
 
             return this;
         }
