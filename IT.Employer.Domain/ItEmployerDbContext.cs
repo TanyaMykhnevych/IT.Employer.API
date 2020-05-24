@@ -1,6 +1,7 @@
 ﻿using IT.Employer.Domain.Models.Base;
 using IT.Employer.Domain.Models.CompanyN;
 using IT.Employer.Domain.Models.EmployeeN;
+using IT.Employer.Domain.Models.Hiring;
 using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Domain.Models.User;
 using IT.Employer.Domain.Models.VacancyN;
@@ -30,6 +31,7 @@ namespace IT.Employer.Domain
         public DbSet<Characteristic> Characteristics { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Vacancy> Vacancies { get; set; }
+        public DbSet<Hire> Hires { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

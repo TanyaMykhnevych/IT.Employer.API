@@ -1,5 +1,4 @@
-﻿using IT.Employer.Domain.Models.TeamN;
-using IT.Employer.Services.Models.Settings;
+﻿using IT.Employer.Services.Models.Settings;
 using IT.Employer.Services.Models.Settings.Price;
 using Microsoft.Extensions.Options;
 using System;
@@ -20,7 +19,15 @@ namespace IT.Employer.Services.Services.PricePolicies
         {
             double extraChargeCoefficient = GetExtraChargeCoefficient(teamSize);
 
-            return Math.Round(hourRate * (decimal)(1 + extraChargeCoefficient));
+            return GetPriceWithExtraCharge(hourRate, extraChargeCoefficient);
+        }
+
+        public decimal CalculateTeamHiringHourPrice(decimal[] hourRates)
+        {
+            double extraChargeCoefficient = GetExtraChargeCoefficient(hourRates.Length);
+            decimal sumHourRate = hourRates.Sum();
+
+            return GetPriceWithExtraCharge(sumHourRate, extraChargeCoefficient);
         }
 
         public decimal CalculateInitialHourPrice(decimal hiringHourRate, int teamSize)
@@ -41,6 +48,11 @@ namespace IT.Employer.Services.Services.PricePolicies
             }
 
             return 0;
+        }
+
+        private decimal GetPriceWithExtraCharge(decimal hourRate, double extraChargeCoefficient)
+        {
+            return Math.Round(hourRate * (decimal)(1 + extraChargeCoefficient));
         }
     }
 }

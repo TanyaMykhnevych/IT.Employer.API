@@ -38,6 +38,7 @@ namespace IT.Employer.Services.Stores
                 .AsNoTracking()
                 .Include(e => e.Characteristics)
                 .Include(e => e.Company)
+                .Include(e => e.Team)
                 .FirstOrDefault(c => c.Id == id);
         }
 

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using IT.Employer.Domain.Enums;
 using IT.Employer.Domain.Models.EmployeeN;
+using IT.Employer.Domain.Models.TeamN;
 using IT.Employer.Entities.Models.Base;
 using IT.Employer.Entities.Models.EmployeeN;
+using IT.Employer.Entities.Models.Team;
 using IT.Employer.Services.Exceptions.Common;
 using IT.Employer.Services.Extensions;
 using IT.Employer.Services.QueryBuilders.EmployeeN;
@@ -50,6 +52,11 @@ namespace IT.Employer.Services.Services.EmployeeN
             Employee employee = _store.GetById(id);
             EmployeeDTO result = _mapper.Map<EmployeeDTO>(employee);
             SetHiringRate(result, 1);
+
+            if (employee.Team != null)
+            {
+                result.Team = _mapper.Map<Team, TeamDTO>(employee.Team);
+            }
 
             return result;
         }

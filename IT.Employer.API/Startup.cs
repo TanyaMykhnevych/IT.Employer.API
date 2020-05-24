@@ -125,6 +125,7 @@ namespace IT.Employer.API
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/hubs/chat");
+                endpoints.MapHub<NotificationHub>("/hubs/notification");
             });
 
             app.UseSwagger();
