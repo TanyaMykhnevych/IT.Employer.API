@@ -57,9 +57,9 @@ namespace IT.Employer.WebAPI.Controllers.EmployeeN
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]EmployeeDTO model)
         {
-            await _service.Create(model);
+            Guid createdId = await _service.Create(model);
 
-            return Ok(_service.GetById(model.Id));
+            return Ok(_service.GetById(createdId));
         }
 
         [HttpPut("{id}")]

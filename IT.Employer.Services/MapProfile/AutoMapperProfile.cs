@@ -53,8 +53,10 @@ namespace IT.Employer.Services.MapProfile
             CreateMap<Company, CompanyDTO>().ReverseMap();
             CreateMap<Employee, EmployeeDTO>()
                 .ForMember(e => e.Team, opts => opts.Ignore())
-                .ForMember(e => e.CompanyName, opts => opts.MapFrom(s => s.Company.Name))
-                .ReverseMap();
+                .ForMember(e => e.CompanyName, opts => opts.MapFrom(s => s.Company.Name));
+            CreateMap<EmployeeDTO, Employee>()
+                .ForMember(e => e.Team, opts => opts.Ignore())
+                .ForMember(e => e.Company, opts => opts.Ignore());
             CreateMap<Characteristic, CharacteristicDTO>().ForMember(c => c.Employee, opts => opts.Ignore()).ReverseMap();
             CreateMap<Vacancy, VacancyDTO>().ReverseMap();
             CreateMap<Team, TeamDTO>().ReverseMap();

@@ -8,48 +8,41 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.CompanyN.Company">
-    <Position X="6.25" Y="2.25" Width="1.5" />
+    <Position X="6" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAggAAAAAAAAAQAAAAAAAACAQAAIAAAAAA=</HashCode>
       <FileName>Models\Company\Company.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.EmployeeN.Characteristic">
-    <Position X="10.75" Y="2.25" Width="1.5" />
+    <Position X="9.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAACAACAAA=</HashCode>
       <FileName>Models\Employee\Characteristic.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.EmployeeN.Employee">
-    <Position X="4" Y="2.25" Width="1.5" />
+    <Position X="4.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAEAAACIgQAAgCAAAAAwCAAAAAAAAEAAgBAAAAAg=</HashCode>
+      <HashCode>AAFASEAAACIgQAAgCAAAAAwCAAAAAAAQEAAgBAAAAAg=</HashCode>
       <FileName>Models\Employee\Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.TeamN.Team">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+    <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAEBAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAIgAAAAAAAAAAQAAAAAAAAAAAAEBAAAAAA=</HashCode>
       <FileName>Models\Team\Team.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.User.AppUser" Collapsed="true">
     <Position X="11.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAAEAAAAIAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAg=</HashCode>
       <FileName>Models\User\AppUser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IT.Employer.Domain.Models.User.ITEmployerRole" Collapsed="true">
-    <Position X="13" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\User\ITEmployerRole.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="IT.Employer.Domain.Models.User.Role" Collapsed="true">
+  <Class Name="IT.Employer.Domain.Models.User.Role">
     <Position X="11.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -57,10 +50,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IT.Employer.Domain.Models.VacancyN.Vacancy">
-    <Position X="13" Y="2.25" Width="1.5" />
+    <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABBAAAAAAIgAAAgAAAAAAwAAAAAABAAAAAgBAAAAAg=</HashCode>
       <FileName>Models\Vacancy\Vacancy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IT.Employer.Domain.Models.Hiring.Hire">
+    <Position X="13" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIBEAAIAgAAACAAAAAACCAAABAAAEAAABAACAgA=</HashCode>
+      <FileName>Models\Hiring\Hire.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="IT.Employer.Domain.Enums.CompanySize">
