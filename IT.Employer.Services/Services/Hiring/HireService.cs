@@ -79,6 +79,13 @@ namespace IT.Employer.Services.Services.Hiring
             return companyHires.Select(_mapper.Map<Hire, HireDTO>).ToList();
         }
 
+        public List<HireDTO> GetCompanySentOffers(Guid companyId)
+        {
+            List<Hire> companyHires = _hireStore.GetSentHiresByCompanyId(companyId);
+
+            return companyHires.Select(_mapper.Map<Hire, HireDTO>).ToList();
+        }
+
         public HireDTO GetHireById(Guid id)
         {
             Hire hire = _hireStore.GetById(id);

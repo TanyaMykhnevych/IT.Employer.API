@@ -51,6 +51,20 @@ namespace IT.Employer.Services.Stores.Hiring
                .ToList();
         }
 
+        public List<Hire> GetSentHiresByCompanyId(Guid companyId)
+        {
+            return _context.Hires
+                  .AsNoTracking()
+                  .Include(e => e.HiringCompany)
+                  .Include(e => e.Company)
+                  .Include(e => e.Employee)
+                  .Include(e => e.Team)
+                  .ThenInclude(t => t.Members)
+                  .Where(c => c.HiringCompanyId == companyId)
+                  .ToList();
+
+        }
+
         public async Task Update(Hire employee)
         {
             _context.Update(employee);
