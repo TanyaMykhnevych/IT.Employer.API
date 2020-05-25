@@ -10,6 +10,7 @@ namespace IT.Employer.Services.Stores.Hiring
         Task<Guid> Create(Hire employee);
         Hire GetById(Guid id);
         List<Hire> GetHiresByCompanyId(Guid companyId);
+        List<Hire> GetSentHiresByCompanyId(Guid companyId);
         Task Update(Hire employee);
     }
 }

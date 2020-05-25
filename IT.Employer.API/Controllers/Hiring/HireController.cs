@@ -41,6 +41,14 @@ namespace IT.Employer.WebAPI.Controllers.Hiring
             return Ok(hires);
         }
 
+        [HttpGet("company/{companyId:guid}/sent")]
+        public IActionResult GetSentHires(Guid companyId)
+        {
+            List<HireDTO> hires = _hireService.GetCompanySentOffers(companyId);
+
+            return Ok(hires);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] HireDTO hire)
         {
@@ -54,6 +62,7 @@ namespace IT.Employer.WebAPI.Controllers.Hiring
         public async Task<IActionResult> Approve(Guid id)
         {
             await _hireService.ApproveHire(id);
+            await _notificationHubContext.Clients.All.SendAsync("OfferApproved", _hireService.GetHireById(id));
 
             return Ok();
         }
@@ -62,6 +71,7 @@ namespace IT.Employer.WebAPI.Controllers.Hiring
         public async Task<IActionResult> Decline(Guid id)
         {
             await _hireService.DeclineHire(id);
+            await _notificationHubContext.Clients.All.SendAsync("OfferDeclined", _hireService.GetHireById(id));
 
             return Ok();
         }

@@ -9,6 +9,7 @@ namespace IT.Employer.Services.Services.Hiring
     {
         HireDTO GetHireById(Guid id);
         List<HireDTO> GetCompanyOffers(Guid companyId);
+        List<HireDTO> GetCompanySentOffers(Guid companyId);
         Task<Guid> CreateHire(HireDTO hire);
         Task ApproveHire(Guid id);
         Task DeclineHire(Guid id);
